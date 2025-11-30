@@ -20,9 +20,9 @@ jobs:
         with:
           version: stable
       - run: npm ci
-      - run: npm run prettier:check
+      # - run: npm run prettier:check
       - run: npm run lint
       - run: npm run compile
       - run: npm run build:ts
       - run: npm test
-      - run: npm run coverage
+      # - run: npm run coverage

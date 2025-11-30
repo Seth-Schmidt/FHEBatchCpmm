@@ -40,6 +40,7 @@ A privacy-preserving Constant Product Market Maker (CPMM) built on [Zama's FHEVM
   - [Slippage Risk](#slippage-risk)
 - [Potential Improvements](#potential-improvements)
 - [Test Coverage](#test-coverage)
+- [Hardhat Tasks](#hardhat-tasks)
 - [Credits](#credits)
 
 ## Overview
@@ -602,6 +603,20 @@ Stress test processing two consecutive batches of 20 operations each:
 - Realistic 6-decimal token amounts (10K token pool)
 - 0.5-2% slippage tolerance on claims
 - Verifies reserves remain consistent across high-volume scenarios
+
+## Hardhat Tasks
+
+Utility tasks for interacting with deployed contracts:
+
+| Task | Command | Description |
+|------|---------|-------------|
+| Create Pair | `npx hardhat task:create-pair --factory <addr> --token0 <addr> --token1 <addr>` | Create a new CPMM pair via factory |
+| Mint Test Tokens | `npx hardhat task:mint-test-tokens --to <addr>` | Mint 10 Token0 and 10 Token1 to an address |
+| Initial Mint | `npx hardhat task:initial-mint --pair <addr> --amount0 <n> --amount1 <n>` | Initialize pool with first liquidity |
+| Batch Lifecycle | `npx hardhat task:batch-lifecycle --pair <addr>` | Run full batch: enqueue 2 mints → process → decrypt → finalize |
+| Finalize Batch | `npx hardhat task:finalize-batch --pair <addr>` | Manually finalize a batch awaiting decryption |
+
+All tasks support `--network sepolia` or `--network localhost`.
 
 ## Credits
 

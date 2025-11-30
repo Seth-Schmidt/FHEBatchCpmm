@@ -1,0 +1,3 @@
+allow revoking during batch processing
+
+add that revoke gas scales with batch size to README
